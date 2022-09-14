@@ -1,64 +1,63 @@
-# HBNB Console and Web Infrastucture
+<p align=center>
+    <img src="https://github.com/ShagizMan/AirBnB_clone/blob/master/assets/alx-bnb_logo.png" alt="logo_AirBnB">
+</p>
 
-This repo contains a command interpreter for the Holberton Airbnb project, as well as applications for web deployment. The console can be run from the command line and to create, manipulate, and store class objects in a JSON format or using a MySQL database. You'll also find a series of Flask web applications used for deployment of dynamic web content. In a further [repository[(https://github.com/mmoscovics/AirBnB_clone_v3), I collaborated on building out an API for the site side of the project.
+<h1 align=center> AirBnB Clone </h1>
 
-## Console
-### Supported classes:
-* BaseModel
-* User
-* State
-* City
-* Amenity
-* Place
-* Review
+## Descriptions :house:
 
-### Commands:
-* create - create an object
-* show - show an object (based on id)
-* destroy - destroy an object
-* all - show all objects, of one type or all types
-* quit/EOF - quit the console
-* help - see descriptions of commands
-* delete - delete and object from database
+AirBnB is a complete web application, integrating database storage, a back-end API, and front-end interfacing in a clone of AirBnB.
 
-To start, navigate to the project folder and enter `./console.py` in the shell.
+## Console :computer:
 
-#### Create
-`create <class name> [param]`
-Ex:
-`create BaseModel name="john"`
+The console is a command line interpreter that permits management of the backend of AirBnB. It can be used to handle and manipulate all classes utilized by the application.
 
-#### Show
-`show <class name> <object id>`
-Ex:
-`show User my_id`
+### Using the Console
 
-#### Destroy
-`destroy <class name> <object id>`
-Ex:
-`destroy Place my_place_id`
+The AirBnB console can be run both interactively and non-interactively. 
+To run the console in non-interactive mode, pipe any command(s) into an execution 
+of the file `console.py` at the command line.
 
-#### All
-`all` or `all <class name>`
-Ex:
-`all` or `all State`
+```
+$ echo "help" | ./console.py
+(hbnb) 
+Documented commands (type help <topic>):
+========================================
+EOF  all  count  create  destroy  help  quit  show  update
 
-#### Quit
-`quit` or `EOF`
+(hbnb) 
+$
+```
 
-#### Help
-`help` or `help <command>`
-Ex:
-`help` or `help quit`
-### Delete
-`delete` or `delete <obj>`
-Ex:
-`delete` or `delete user`
+Alternatively, to use the AirBnB console in interactive mode, run the 
+file `console.py` by itself:
 
-Additionally, the console supports `<class name>.<command>(<parameters>)` syntax.
-Ex:
-`City.show(my_city_id)`
+```
+$ ./console.py
+```
 
-## 0x02. AirBnB clone - MySQL
+While running in interactive mode, the console displays a prompt for input:
 
-### 0. 0. Fork me if you can!
+```
+$ ./console.py
+(hbnb) 
+```
+
+To quit the console, enter the command `quit`, or input an EOF signal 
+(`ctrl-D`).
+
+```
+$ ./console.py
+(hbnb) quit
+$
+```
+
+```
+$ ./console.py
+(hbnb) EOF
+$
+```
+
+## Authors :black_nib:
+* **Jane Njoroge** (https://github.com/Enaj-ciiru)
+* **Florence Wangui** (https://github.com/Florence-wangui)

@@ -1,15 +1,11 @@
 footer {
-    position: fixed;
-    background: #00FF00;
+    color: #000000;
     height: 60px;
     width: 100%;
+    align-items: center;
     bottom: 0;
-}
-footer p {
+    display: flex;
+    justify-content: center;
     position: absolute;
-    text-align: center;
-    top: 10%;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    background-color: #00FF00;
 }
