@@ -25,8 +25,9 @@ button:hover {
     display: inline-grid;
 }
 .filters h2 {
+    margin-left: 15%;
     margin-top: 0;
-    margin-bottom: 5px;
+    margin-bottom: 0;
     font-weight: 600;
 }
 .filters h3 {
@@ -45,6 +46,29 @@ button:hover {
     width: 25%;
     border-right: 1px solid #DDDDDD;
 }
+
+ul {
+	padding-left: 0px;
+}
+
+li {
+	padding-left: 0%;
+}
+
+.amenities ul {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.locations .list_content {
+	padding-left: 60px;
+	padding-top: 10px;
+}
+
+.amenities .list_content {
+	padding-left: 30px;
+}
+
 .amenities {
     height: 100%;
     width: 25%;
@@ -52,24 +76,25 @@ button:hover {
 .popover {
     visibility: hidden;
     width: 100%;
-    border: 1px solid #DDDDDD;
+	height: 300px;
+    max-height: 300px;
+	border: 1px solid #DDDDDD;
     border-radius: 4px;
     background: #FAFAFA;
     padding-bottom: 25px;
-    overflow-y: scroll;
-    max-height: 300px;
-    height: fit-content;
+	overflow-y: scroll;
 }
 .amenities .popover {
+    padding: 20px 0;
     margin-left: -5px;
+    margin-top: 0%;
 }
-
+.locations .popover {
+	padding: 20px 0;
+    margin-top: 0%;
+}
 .popover ul {
     list-style-type: none;
-}
-
-.popover li {
-    margin-bottom: 5px;
 }
 .amenities:hover .popover,
 .locations:hover .popover {
