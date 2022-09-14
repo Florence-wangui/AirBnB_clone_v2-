@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is the file storage class for AirBnB"""
+""" Defines FileStorage class. """
 import json
 from models.base_model import BaseModel
 from models.user import User
@@ -11,75 +11,60 @@ from models.review import Review
 
 
 class FileStorage:
-    """This class serializes instances to a JSON file and
-    deserializes JSON file to instances
+    """
+    Serializes instances to a JSON file and deserializes
+    JSON file to instances.
+
     Attributes:
-        __file_path: path to the JSON file
-        __objects: objects will be stored
+        __file_path (str): Path to the JSON file.
+        __objects (dict): Store all objects.
     """
     __file_path = "file.json"
     __objects = {}
-    all_classes = {'BaseModel': BaseModel, 'User': User,
-                   'State': State, 'City': City, 'Amenity': Amenity,
-                   'Place': Place, 'Review': Review}
 
     def all(self, cls=None):
-        """returns a dictionary
-        Return:
-            returns a dictionary of __object
-        """
-        all_return = {}
+        """ Returns the dictionary __objects. """
+        if cls is not None:
+            if type(cls) == str:
+                cls = eval(cls)
+            cls_dict = {}
+            for key, value in self.__objects.items():
+                if type(value) == cls:
+                    cls_dict[key] = value
+            return cls_dict
 
-        # if cls is valid
-        if cls:
-            if cls.__name__ in self.all_classes:
-                # copy objects of cls to temp dict
-                for key, val in self.__objects.items():
-                    if key.split('.')[0] == cls.__name__:
-                        all_return.update({key: val})
-        else:  # if cls is none
-            all_return = self.__objects
-
-        return all_return
+        return self.__objects
 
     def new(self, obj):
-        """sets __object to given obj
-        Args:
-            obj: given object
-        """
-        if obj:
-            key = "{}.{}".format(type(obj).__name__, obj.id)
-            self.__objects[key] = obj
+        """ Sets in __objects the obj with key<obj class name>.id."""
+        self.__objects["{}.{}".format(type(obj).__name__, obj.id)] = obj
 
     def save(self):
-        """serialize the file path to JSON file path
-        """
-        my_dict = {}
-        for key, value in self.__objects.items():
-            my_dict[key] = value.to_dict()
-        with open(self.__file_path, 'w', encoding="UTF-8") as f:
-            json.dump(my_dict, f)
+        """ Serializes __objects to the JSON file."""
+        odict = {o: self.__objects[o].to_dict() for o in self.__objects.keys()}
+        with open(self.__file_path, "w", encoding="utf-8") as myfile:
+            json.dump(odict, myfile)
 
     def reload(self):
-        """serialize the file path to JSON file path
-        """
+        """Deserialize the JSON file __file_path to __objects, if it exists."""
         try:
-            with open(self.__file_path, 'r', encoding="UTF-8") as f:
-                for key, value in (json.load(f)).items():
-                    value = eval(value["__class__"])(**value)
-                    self.__objects[key] = value
+            with open(self.__file_path, "r", encoding="utf-8") as myfile:
+                for o in json.load(myfile).values():
+                    name = o["__class__"]
+                    del o["__class__"]
+                    self.new(eval(name)(**o))
         except FileNotFoundError:
             pass
 
-    def close(self):
-        """Reload JSON objects
-        """
-        return self.reload()
-
     def delete(self, obj=None):
-        """delete obj from __objects if present
+        """Delete obj from __objects if it’s inside - if obj is equal to None,
+        The method should not do anything
         """
-        if obj:
-            # format key from obj
-            key = "{}.{}".format(type(obj).__name__, obj.id)
-            del self.__objects[key]
+        try:
+            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
+        except (AttributeError, KeyError):
+            pass
+
+    def close(self):
+        """Call the reload method."""
+        self.reload()
