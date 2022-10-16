@@ -58,6 +58,6 @@ $ ./console.py
 $
 ```
 
-## Authors :black_nib:
-* **Jane Njoroge** [Github](https://github.com/Enaj-ciiru)
-* **Florence Wangui** [Github](https://github.com/Florence-wangui)
+## Authors :black_nib: 
+[Jane Njoroge](https://github.com/Enaj-ciiru)
+[Florence Wangui](https://github.com/Florence-wangui)
