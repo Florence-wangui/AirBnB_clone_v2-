@@ -21,8 +21,3 @@ _This is project but work with the framework flask_
 | Task | Advance |
 | ------ | ------ |
 | 12. HBNB is alive! | Write a script that starts a Flask web application |
-
-
-## Authors :black_nib:
-
-[Esteban De La Hoz](https://www.linkedin.com/in/esteban-de-la-hoz-romero-b6270017b/) | [Twitter](https://twitter.com/Esteban18911) | [GitHub](https://github.com/Esteban18911)
